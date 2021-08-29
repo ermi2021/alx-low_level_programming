@@ -1,18 +1,32 @@
  #include <stdio.h>
 
 /**
- *main - print 0123456789 using putchar
+ *main - print all combinations of three different digits
  *Return: Always 0 (Success)
  */
 
 int main(void)
 {
-	int n = '0';
+	int one;
+	int ten;
+	int hundred;
 
-	while (n <= '9')
+	for (hundred = '0'; hundred <= '9'; hundred++) /*hundreds place*/
 	{
-		putchar(n);
-		n++;
+		for (ten = (hundred + 1); ten <= '9'; ten++) /*tens=100s+1*/
+		{
+			for (one = (ten + 1); one <= '9'; one++) /*ones*/
+			{
+				putchar(hundred);
+				putchar(ten);
+				putchar(one);
+				if (hundred != '7' || ten != '8' || one != '9')
+				{
+					putchar(',');
+					putchar(' ');
+				}
+			}
+		}
 	}
 	putchar('\n');
 
