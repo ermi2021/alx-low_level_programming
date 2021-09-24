@@ -1,46 +1,52 @@
-#include "main.h"
 #include <stdlib.h>
+#include <string.h>
 #include <stdio.h>
-
-
+#include "main.h"
 /**
- * str_concat - concatenates two strings
- * @s1: string 1
- * @s2: string 2
- * Return: pointer to concatenated string
- */
+* str_concat - concatenates 2 strings and returns a pointer to the result
+* @s1: string to concetenate
+* @s2: another one
+*
+* Return: pointer to result string
+*/
 
 char *str_concat(char *s1, char *s2)
 {
-char *concat;
-int len1 = 0, len2 = 0, x = 0, y = 0;
+char *neow;
+int len1 = 0, len2 = 0, a, b;
 
 if (s1 == NULL)
 s1 = "";
 if (s2 == NULL)
 s2 = "";
-while (*(s1 + x))
-len1++, x++;
-while (*(s2 + y))
-len2++, y++;
-len2++; 
 
-concat = malloc(sizeof(char) * (len1 + len2));
+while (s1[len1] != '\0')
+{
+len1++;
+}
+while (s2[len2] != '\0')
+{
+len2++;
+}
+len2++;
 
-if (concat == NULL) 
+neow = malloc((len1 + len2) *sizeof(*s1));
+if (neow == NULL)
 return (NULL);
-
-x = 0, y = 0;
-while (x < len1)
+a = 0;
+while (a < len1)
 {
-*(concat + x) = *(s1 + x);
-x++;
+neow[a] = s1[a];
+
+a++;
 }
-while (y < len2)
+b = 0;
+while (b <= len2)
 {
-*(concat + x) = *(s2 + y);
-x++, y++;
+neow[a] = s2[b];
+a++;
+b++;
 }
 
-return (concat);
+return (neow);
 }
